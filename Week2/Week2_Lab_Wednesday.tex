@@ -1,0 +1,74 @@
+\documentclass[10pt,twoside,a4paper]{report}
+%\documentclass[12pt]{book}
+\usepackage[dvips]{graphicx}
+%\usepackage[leqno,intlimits,sumlimits]{amsmath}
+\usepackage[intlimits,sumlimits]{amsmath}
+\usepackage[hmargin={1.5cm,1.5cm},vmargin={3cm,3cm}]{geometry}
+\usepackage{latexsym,mathrsfs,gensymb,amssymb}
+\usepackage{xspace}
+\usepackage{upgreek,pifont}
+\usepackage{rotating}
+\usepackage{supertabular}
+\usepackage{overcite}
+\usepackage{lscape}
+\usepackage{footnpag}
+\usepackage{xcolor}
+\usepackage{lscape}
+\usepackage{pstricks,pst-node,pst-grad}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\usepackage{fontawesome5}
+\usepackage{fontawesome} 
+\usepackage{wasysym}
+\newcommand{\doublespace}{\addtolength{\baselineskip}{0.25\baselineskip}}
+
+
+
+\begin{document}
+	{\bf{\Large{Lab 1: Identify Entities and Attributes from a Flat File}}}\\
+	
+    	{\Large{Problem Statement:}} \\
+	
+	You are given a CSV export from an e-commerce app that mixes order, customer, and product details in each row. Identify the candidate entities and list their key attributes.\\
+	
+	{\Large{Answer:}}   Input CSV rows or columns
+	\texttt{order\_id}, \texttt{order\_date}, \texttt{customer\_name},
+	\texttt{customer\_email}, \texttt{product\_id}, \texttt{product\_name},
+	\texttt{quantity}, \texttt{price}, \texttt{shipping\_address}\\
+	
+	\begin{itemize}
+		\item Customers
+		    \begin{itemize}
+		    	\item  \texttt{customer\_id},
+		    	\item  \texttt{customer\_name},
+		    	 \item \texttt{customer\_email},
+		    	 \item \texttt{shipping\_address}
+		    \end{itemize}
+		    \item Order
+		    \begin{itemize}
+		    	\item  \texttt{order\_id},
+		    	\item  \texttt{order\_date},
+		    	\item{\texttt{quantity}},
+		    	\item \texttt{shipping\_address}    
+	\end{itemize}
+	\item Product
+	    \begin{itemize}
+	    	\item  \texttt{product\_id},
+	    	\item  \texttt{producr\_name},
+	    	\item \texttt{price},
+	    		    \end{itemize}
+	
+	\end{itemize}
+	
+	{\bf{\Large{Lab 2: Classify Relationships and Keys}}}\\
+	
+{\Large{Problem Statement:}} \\
+	
+	Using entities from Lab 1, state relationship types and propose PK/FK for each table. Include examples where orders contain multiple products.\\
+	
+	´\Large {Answer:}
+\begin{tabular} {|c|c|c|}
+	
+	\end{tabular}
+	
+\end{document}

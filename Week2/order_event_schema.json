@@ -1,0 +1,30 @@
+{
+  "type": "record",
+  "name": "OrderEvent",
+  "fields": [
+    {
+      "name": "order_id",
+      "type": "string"
+    },
+    {
+      "name": "customer_id",
+      "type": "string"
+    },
+    {
+      "name": "amount_gbp",
+      "type": "double"
+    },
+    {
+      "name": "order_status",
+      "type": "string"
+    },
+    {
+      "name": "coupon_code",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+customer_id,name,city,loyalty_points
+1,Asha Kapoor,Pune,120.0
+2,Rahul Mehta,Mumbai,80.0
+3,Sita Rao,Bengaluru,
+4,John Doe,Pune,200.0
+5,Priya Singh,,50.0

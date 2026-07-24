@@ -1,0 +1,17 @@
+[
+  {
+    "product_id": "P01",
+    "product_name": "Keyboard",
+    "category": "Accessories"
+  },
+  {
+    "product_id": "P02",
+    "product_name": "Mouse",
+    "category": "Accessories"
+  },
+  {
+    "product_id": "P03",
+    "product_name": "Monitor",
+    "category": "Displays"
+  }
+]
