@@ -1,0 +1,34 @@
+# Mini Assignment Week 3
+
+## Project Structure
+```
+Mini_Assignment_Week3
+├── airflow_dag
+│   └── assignment_dag.py
+├── data
+│   ├── clickstream.csv
+│   ├── customers.csv
+│   ├── orders.csv
+│   ├── orders_export.csv
+│   ├── orders_export.parquet
+│   └── products.csv
+├── database
+│   └── Quickcart.db
+├── Mini_Assignment_Answer.docx
+├── Mini_Assignment_Answer.pdf
+├── mini_assignment_tree.txt
+├── python_scripts
+│   ├── 01_data_ingesion.py
+│   ├── 02_data_cleaning.py
+│   ├── 03_clickstream_analysis.py
+│   └── 04_export_optimazation.py
+└── sql_scripts
+    ├── 01_create_tables.sql
+    ├── 02_load_data.sql
+    ├── 03_data_cleaning.sql
+    ├── 04_intermediate_SQL_queries.sql
+    ├── 05_advenced_SQL_queries.sql
+    └── 06_indexes.sql
+
+6 directories, 21 files
+```
