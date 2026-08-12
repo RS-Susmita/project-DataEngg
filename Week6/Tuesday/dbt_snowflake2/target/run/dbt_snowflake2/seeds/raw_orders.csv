@@ -1,0 +1,14 @@
+
+    
+    
+    
+    create table RETAIL_DB_SR.RAW.raw_orders (order_id integer,product_id integer,quantity integer,order_date date)
+  ;
+    -- dbt seed --
+    
+            insert overwrite into RETAIL_DB_SR.RAW.raw_orders (order_id, product_id, quantity, order_date) values
+            (%s,%s,%s,%s),(%s,%s,%s,%s),(%s,%s,%s,%s),(%s,%s,%s,%s),(%s,%s,%s,%s)
+        
+
+;
+  
