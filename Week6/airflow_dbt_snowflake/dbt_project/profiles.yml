@@ -1,0 +1,26 @@
+Lab_dbt_snowflake:
+  outputs:
+    dev:
+      account: RRNKABO-HU88041
+      database: RETAIL_DB_SR
+      password: SR@Snowflake16
+      role: ACCOUNTADMIN
+      schema: RAW
+      threads: 4
+      type: snowflake
+      user: SUSMITA
+      warehouse: LAB_WH_SR
+  target: dev
+dbt_snowflake2:
+  outputs:
+    dev:
+      account: RRNKABO-HU88041
+      database: RETAIL_DB_SR
+      password: Sr@Snowflake16
+      role: ACCOUNTADMIN
+      schema: RAW
+      threads: 4
+      type: snowflake
+      user: SUSMITA
+      warehouse: LAB_WH_SR
+  target: dev
