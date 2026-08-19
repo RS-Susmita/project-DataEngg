@@ -1,0 +1,11 @@
+
+    
+    
+    truncate table "dev"."main"."coffee_sales";
+    -- dbt seed --
+    
+          COPY "dev"."main"."coffee_sales" FROM '/home/susmita/Susmita/Projects/Data_Engg/Lab_Works/Mini_Assignment_Week7/CoffeeSales/seeds/coffee_sales.csv' (FORMAT CSV, HEADER TRUE, DELIMITER ',')
+        
+
+;
+  

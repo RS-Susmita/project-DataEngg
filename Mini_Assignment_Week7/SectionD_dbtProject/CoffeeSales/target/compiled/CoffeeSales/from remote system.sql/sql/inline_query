@@ -1,0 +1,1 @@
+select datetime, count(*) as n from "dev"."main"."stg_coffee_sales" group by datetime having count(*) > 1
