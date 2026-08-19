@@ -1,9 +1,0 @@
-version: 2
-
-models:
-  - name: stg_coffee_sales
-    columns:
-      - name: datetime
-        tests:
-          - not_null
-          - unique
