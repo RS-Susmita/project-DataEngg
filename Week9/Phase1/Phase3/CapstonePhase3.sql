@@ -1,0 +1,123 @@
+----- Phase3 Q2
+
+
+USE DATABASE BANK_FRAUD;
+--DESCRIBE TABLE bankfraud
+
+
+-- Preview the newly transformed table created by dbt
+SELECT 
+    CUSTOMER_ID, 
+    TX_DATE, 
+    TX_TIME, 
+    TX_TIMESTAMP, 
+    TRANSACTION_AMOUNT
+FROM bank_fraud_analytics       ----- TRANSACTION DATA LOADED AND TRANSFORMED 
+LIMIT 10;
+
+-- View the row-count logging history
+SELECT * 
+FROM DBT_ROW_COUNT_LOG                    ----------- SHOWED ROW_COUNT ----------
+ORDER BY run_timestamp DESC;
+
+----- Check Fraud_detection rules ------
+
+SELECT 
+    risk_rule_velocity,
+    risk_rule_night_spike,
+    risk_rule_high_risk_merchant,
+    COUNT(*) AS transactions
+FROM BANK_FRAUD.PUBLIC.FRAUD_ALERTS
+GROUP BY 1,2,3;
+
+
+------- Flag Suspicious Transaction------
+
+SELECT 
+    COUNT(*) AS total_transactions,
+    SUM(CASE WHEN IS_FLAGGED_FRAUD = 1 THEN 1 ELSE 0 END) AS flagged_transactions
+FROM BANK_FRAUD.PUBLIC.FRAUD_ALERTS;
+
+
+
+SELECT *
+FROM BANK_FRAUD.PUBLIC.FRAUD_ALERTS
+WHERE IS_FLAGGED_FRAUD = 1
+LIMIT 20;
+
+
+
+------ FRAUD SUMMARY TABLE ---------
+SELECT *
+FROM BANK_FRAUD.PUBLIC.FRAUD_SUMMARY
+ORDER BY TX_DATE DESC
+LIMIT 20;
+
+
+SELECT 
+    CUSTOMER_ID,
+    TX_DATE,
+    TRANSACTION_AMOUNT,
+    RISK_RULE_VELOCITY,
+    RISK_RULE_NIGHT_SPIKE,
+    RISK_RULE_HIGH_RISK_MERCHANT,
+    IS_FLAGGED_FRAUD
+FROM fraud_alerts
+WHERE IS_FLAGGED_FRAUD = 1
+LIMIT 20;
+
+
+SELECT *
+FROM BANK_FRAUD.PUBLIC.FRAUD_ALERTS
+WHERE IS_FLAGGED_FRAUD = 1
+ORDER BY TX_TIMESTAMP DESC;
+
+------ AFTER SCHEDULING CHECK THE FOLLOWINGS: 
+
+--- SEE ALL SUSPICIOUS TRANSACTIONS
+
+SELECT *
+FROM BANK_FRAUD.PUBLIC.FRAUD_ALERTS
+WHERE IS_FLAGGED_FRAUD = 1
+ORDER BY TX_TIMESTAMP DESC;
+
+------- SEE FRAUD COUNT  ------
+
+SELECT
+    COUNT(*) AS total_flagged_fraud
+FROM BANK_FRAUD.PUBLIC.FRAUD_ALERTS
+WHERE IS_FLAGGED_FRAUD = 1;
+
+------ See which fraud rule detected them
+
+SELECT
+    CUSTOMER_ID,
+    TX_TIMESTAMP,
+    TRANSACTION_AMOUNT,
+    FRAUD_TYPE,
+    RISK_RULE_VELOCITY,
+    RISK_RULE_NIGHT_SPIKE,
+    RISK_RULE_HIGH_RISK_MERCHANT,
+    IS_FLAGGED_FRAUD
+FROM BANK_FRAUD.PUBLIC.FRAUD_ALERTS
+WHERE IS_FLAGGED_FRAUD = 1
+ORDER BY TX_TIMESTAMP DESC;
+
+-----
+-------FINAL QUERY 
+
+SELECT
+    COUNT(*) AS total_transactions,
+    SUM(IS_FLAGGED_FRAUD) AS flagged_transactions,
+    ROUND(
+        100.0 * SUM(IS_FLAGGED_FRAUD) / COUNT(*),
+        2
+    ) AS fraud_alert_rate_pct,
+    SUM(
+        CASE
+            WHEN IS_FLAGGED_FRAUD = 1
+            THEN TRANSACTION_AMOUNT
+            ELSE 0
+        END
+    ) AS total_risk_exposure
+FROM BANK_FRAUD.PUBLIC.FRAUD_ALERTS;
